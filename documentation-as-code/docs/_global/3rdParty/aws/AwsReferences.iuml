@@ -1,0 +1,19 @@
+
+!$AWS_BASEPATH = "https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v11.1/dist"
+
+' !include $AWS_BASEPATH/AWSCommon.puml
+
+!include $AWS_BASEPATH/Analytics/all.puml
+!include $AWS_BASEPATH/ApplicationIntegration/all.puml
+!include $AWS_BASEPATH/ApplicationIntegration/all.puml
+!include $AWS_BASEPATH/Compute/all.puml
+!include $AWS_BASEPATH/Containers/all.puml
+!include $AWS_BASEPATH/General/all.puml
+!include $AWS_BASEPATH/GroupIcons/all.puml
+!include $AWS_BASEPATH/GroupIcons/all.puml
+!include $AWS_BASEPATH/NetworkingContentDelivery/all.puml
+!include $AWS_BASEPATH/SecurityIdentityCompliance/all.puml
+!include $AWS_BASEPATH/Storage/all.puml
+
+
+skinparam defaultTextAlignment center

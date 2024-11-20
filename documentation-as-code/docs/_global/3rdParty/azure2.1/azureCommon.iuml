@@ -1,0 +1,9 @@
+
+
+!$AZURE_BASEPATH = "https://github.com/plantuml-stdlib/Azure-PlantUML/tree/release/2-1/dist"
+
+!include $AZURE_BASEPATH/AzureCommon.puml
+
+!include $AZURE_BASEPATH/Compute/AzureFunction.puml
+!include $AZURE_BASEPATH/Analytics/AzureEventHub.puml
+' !include $AZURE_BASEPATH/Databases/AzureCosmosDb.puml

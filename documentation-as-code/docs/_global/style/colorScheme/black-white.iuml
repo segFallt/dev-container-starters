@@ -1,0 +1,44 @@
+''
+'' Colors taken from the css file of the BS theme
+''
+!$PRIMARY = "#Black"
+!$SECONDARY = "#White"
+!$LIGHT = "#F8F9FA"
+!$DARK = "#343A40"
+
+!$SUCCESS = "#73A839"
+!$INFO = "#Black"
+!$WARNING = "#DD5600"
+!$DANGER = "#C71C22"
+
+!$LIGHTEN_DARKEN_FACTOR = 20
+!$TRANSPARENCY_LEVEL = 90
+
+'' *_LIGHT = tint (lighter) of the main color of 80%
+''          where TINT is calculated by clr + (255-clr) * tint_factor
+'' *_DARK = shade (darker) of the main color of 80%
+''          and SHADE is calculated by clr * (1 - shade_factor)
+''
+!$BACKGROUND = "transparent"
+!$FOREGROUND = "transparent"
+!$PRIMARY_LIGHT = %lighten($PRIMARY, $LIGHTEN_DARKEN_FACTOR)
+!$PRIMARY_DARK = %darken($PRIMARY, $LIGHTEN_DARKEN_FACTOR)
+!$PRIMARY_TEXT = "#Black"
+!$SECONDARY_LIGHT = %lighten($SECONDARY, $LIGHTEN_DARKEN_FACTOR)
+!$SECONDARY_DARK = %darken($SECONDARY, $LIGHTEN_DARKEN_FACTOR)
+!$SECONDARY_TEXT = $SECONDARY_DARK
+!$INFO_LIGHT = %lighten($INFO, $LIGHTEN_DARKEN_FACTOR)
+!$INFO_TEXT = $INFO
+!$SUCCESS_LIGHT = %lighten($SUCCESS, $LIGHTEN_DARKEN_FACTOR)
+!$SUCCESS_TEXT = $SUCCESS
+!$WARNING_LIGHT = %lighten($WARNING, $LIGHTEN_DARKEN_FACTOR)
+!$WARNING_TEXT = $WARNING
+!$DANGER_LIGHT = %lighten($DANGER, $LIGHTEN_DARKEN_FACTOR)
+!$DANGER_TEXT = $DANGER
+!$ARROW = $PRIMARY_DARK
+!$BOX_BACKGROUND = $FOREGROUND
+!$PARTICIPANT_BACKGROUND = $SECONDARY
+
+
+' skinparam backgroundColor $BACKGROUND
+skinparam useBetaStyle false

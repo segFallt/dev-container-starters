@@ -1,0 +1,74 @@
+
+
+' !$AWS_BASEPATH = "https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v11.1/dist"
+!$AWS_BASEPATH = "https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v14.0/dist"
+' !$AWS_BASEPATH = "https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v13.1/dist"
+
+!include $AWS_BASEPATH/AWSSimplified.puml
+
+!$awsBasePath = "../aws14"
+!include $awsBasePath/AwsReferences.iuml
+!include $awsBasePath/AwsContainer.iuml
+
+' Colors
+' ##################################
+!define AWS_COLOR #232F3E
+
+skinparam linetype ortho
+skinparam Shadowing false
+
+
+' AWS Container Elements
+' ##################################
+
+' AwsContainerStyle(CorporateDataCenter, #232F3E, transparent)
+
+' AWS Entity Elements
+' ##################################
+!definelong AwsEntityStyle(e_stereotype)
+    skinparam rectangle<<e_stereotype>> {
+        ' BorderColor<<e_stereotype>> transparent
+        BackgroundColor<<e_stereotype>> transparent
+    }
+!enddefinelong
+
+' Overwriting Elements
+' ##################################
+
+AwsEntityStyle(APIGateway)
+AwsEntityStyle(Client)
+AwsEntityStyle(CloudFront)
+AwsEntityStyle(EC2)
+AwsEntityStyle(ElasticFileSystem)
+AwsEntityStyle(ElasticLoadBalancingApplicationLoadBalancer)
+AwsEntityStyle(ElasticLoadBalancingNetworkLoadBalancer)
+AwsEntityStyle(Internet)
+AwsEntityStyle(Lambda)
+AwsEntityStyle(LambdaLambdaFunction)
+AwsEntityStyle(SecretsManager)
+AwsEntityStyle(SecretsManager)
+AwsEntityStyle(SimpleQueueService)
+AwsEntityStyle(SimpleStorageService)
+AwsEntityStyle(Traditionalserver)
+AwsEntityStyle(TransitGateway)
+AwsEntityStyle(User)
+AwsEntityStyle(WAF)
+
+
+AwsContainerStyle(CorporateDataCenter, #232F3E, transparent)
+' !define CorporateDataCenter(alias, description, label) AwsContainer(alias, CorporateDataCenter, description, label, 1, #232F3E)
+
+AwsContainerStyle(Cloud, #232F3E, transparent)
+' !define Cloud(alias, description, label) AwsContainer(alias, Cloud, description, label, 1, #232F3E)
+
+AwsContainerStyle(VirtualPrivateCloudVPC, #3F8624, transparent)
+' !define VirtualPrivateCloudVPC(alias, description, label) AwsContainer(alias, VirtualPrivateCloudVPC, description, label, 1, #3F8624)
+
+AwsContainerStyle(ElasticKubernetesService, #d86613, transparent)
+' !define ElasticKubernetesService(alias, description, label) AwsContainer(alias, ElasticKubernetesService, description, label, .4, #d86613, #d86613)
+
+AwsContainerStyle(VPCSubnetPrivate, transparent, #147EBA50)
+' !define VPCSubnetPrivate(alias, description, label) AwsContainer(alias, VPCSubnetPrivate, description, label, 1, #147EBA, transparent)
+
+AwsContainerStyle(VPCSubnetPublic, transparent, #3F862450)
+' !define VPCSubnetPublic(alias, description, label) AwsContainer(alias, VPCSubnetPublic, description, label, 1, #3F8624)

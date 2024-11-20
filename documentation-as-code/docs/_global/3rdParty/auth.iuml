@@ -1,0 +1,89 @@
+
+
+!procedure $PrintPingAuthorizeRequestDataContractNote($participant)
+    note right of $participant
+        Link: [[https://confluence.greenwayhealth.com/confluence/x/WoL7Gw PingAuthorize data contract]]
+    end note
+!endprocedure
+
+!procedure $internalClientCredentialAuth($client, $server, $context, $requestNote)
+    group Get Client Credentials access_token for $context
+        $client -> $server ++: POST to /oauth2/token with client_Id + Client Secret and grant_type = client_credentials
+        !if ($requestNote != "")
+            note right of $client
+                $requestNote
+            end note
+        !endif
+        $server -> $server: Validate client_Id + Client Secret
+        $client <-- $server --: Authentication response (and token)
+    end
+!endprocedure
+
+!procedure $validateBearerToken($client, $server, $context, $requestNote)
+    group Introspect access_token for $context
+        $client -> $server: POST /oauth2/token/validate to validate token
+        alt if access_token is valid
+            $client <-- $server: decoded token JWT
+        else if access_token is invalid
+            $client <-- $server: introspection error
+        end    
+        !if ($requestNote != "")
+            note right of $client
+                $requestNote
+            end note
+        !endif
+    end
+!endprocedure
+
+!procedure $introspectToken($client, $server, $context, $requestNote)
+    group Introspect access_token for $context
+        $client -> $server ++: POST /oauth2/as/introspect.oauth2 to introspect token
+        alt if access_token is valid
+            $client <-- $server: decoded token JWT
+        else if access_token is invalid
+            $client <-- $server --: introspection error
+        end    
+        !if ($requestNote != "")
+            note right of $client
+                $requestNote
+            end note
+        !endif
+    end
+!endprocedure
+
+!procedure $jwksLocalValidateToken($client, $server, $context, $requestNote)
+    group Validate access_token for $context (using jwks-rsa)
+        $client -> $server ++: POST /oauth2/jwks to get $server public key
+        $client <-- $server --: $server public key
+        $client -> $client: Decode the access_token JWT and find the unique kid (Key ID) property of the token from the header
+        $client -> $client: Find the signature verification key in JWKS with a matching kid property
+        $client -> $client: convert the retrieved JWKS key to PEM
+        $client -> $client: perform JWT verification
+        !if ($requestNote != "")
+            note right of $client
+                $requestNote
+            end note
+        !endif
+    end
+!endprocedure
+
+!procedure $tokenExchange($client, $server, $context, $requestNote)
+    group Token Exchange access_token for $context
+        $client -> $server: POST to /oauth2/token with client_Id + Client Secret 
+        note right of $client
+            grant_type = urn:ietf:params:oauth:grant-type:token-exchange
+            subject_token = $context access_token
+            subject_token_type = urn:ietf:params:oauth:token-type:access_token
+            actor_token = $client access_token
+            actor_token_type = urn:ietf:params:oauth:token-type:access_token
+        end note
+        !if ($requestNote != "")
+            note right of $client
+                $requestNote
+            end note
+        !endif
+        $server -> $server: Validate client_Id + Client Secret
+        $server --> $client: Authentication response (and token)
+    end
+!endprocedure
+

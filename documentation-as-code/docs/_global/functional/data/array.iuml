@@ -1,0 +1,48 @@
+!$arrayIndexNameSuffix = "_index"
+
+!unquoted function $getArrayIndexName($arrayName)
+    !return $arrayName + $arrayIndexNameSuffix
+!endfunction
+
+!unquoted procedure $incrementArrayIndexValue($arrayName)
+    ' !log begin incrementArrayIndexValue with argument $arrayName
+    !local $arrayIndexName = $getArrayIndexName($arrayName)
+    
+    !local $currentVariableValue = $getArrayIndexValue($arrayName)
+    ' !log current $arrayIndexName value is $currentVariableValue
+    !local $currentVariableValue = $currentVariableValue + 1
+    ' !log new $arrayIndexName value is $currentVariableValue
+    %set_variable_value($arrayIndexName,$currentVariableValue)
+    ' !log end incrementArrayIndexValue
+!endprocedure
+
+!unquoted function $getArrayIndexValue($arrayName)
+    ' !log begin getArrayIndexValue with argument $arrayName
+    !local $arrayIndexName = $getArrayIndexName($arrayName)
+    !if %not(%variable_exists($arrayIndexName))
+        ' !log $arrayIndexName does not exist. initializing with 0
+        %set_variable_value($arrayIndexName,0)
+    !endif
+    !return %get_variable_value($arrayIndexName)
+    ' !log end getArrayIndexValue
+!endfunction
+
+' Procedure to add a value to the "array"
+!unquoted procedure $addValueToArray($arrayName, $value)
+    ' !log begin addValueToArray with arguments: $arrayName, $value
+    $incrementArrayIndexValue($arrayName)
+    !local $variableName = $arrayName + $getArrayIndexValue($arrayName) 
+    ' !log setting $variableName to be $value
+    ' !global $variableName = $value
+    %set_variable_value($variableName,$value)
+    ' !log end addValueToArray
+
+!endprocedure
+
+!unquoted function $getArrayValue($arrayName, $index)
+    ' !log begin getArrayValue with arguments: $arrayName, $index
+    !local $variableName = $arrayName + $index
+    ' !log $variableName value is %get_variable_value($variableName)
+    !return %get_variable_value($variableName)
+    ' !log end getArrayValue
+!endfunction

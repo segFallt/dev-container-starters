@@ -1,0 +1,11 @@
+!$STL_BASEPATH = "https://raw.githubusercontent.com/plantuml/plantuml-stdlib/master/kubernetes"
+
+!include $STL_BASEPATH/k8s-sprites-labeled-25pct.puml
+
+
+' Colors
+' ##################################
+!define Kubernetes_COLOR #326ce5
+!define Kubernetes_BG_COLOR #FFFFFF
+!define Kubernetes_BORDER_COLOR #FF9900
+!define Kubernetes_SYMBOL_COLOR Kubernetes_COLOR

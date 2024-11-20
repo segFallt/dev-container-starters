@@ -1,0 +1,52 @@
+!include ../data/array.iuml
+
+!procedure $setAutoNumber($start="1", $increment="1")
+    autonumber $start $increment
+!endprocedure
+
+!procedure $setMaxMessageSize($size)
+    skinparam maxMessageSize $size
+!endprocedure
+
+!procedure $setTeoz()
+    !pragma teoz true
+!endprocedure
+
+
+
+!$participantVariableArrayName = "participantVariables"
+!$participantLabelsArrayName = "participantLabels"
+
+!unquoted procedure $addSequenceMember($variable, $label, $memberType)
+    ' !log begin addMember with arguments: $variable, $label, $memberType
+    $memberType $variable as "$label"
+
+    $addValueToArray($participantVariableArrayName,$variable)
+    $addValueToArray($participantLabelsArrayName,$label)
+    ' !log end addMember
+!endprocedure
+
+!unquoted procedure $addParticipant($variable, $label)
+    ' !log begin addParticipant with arguments: $variable, $label
+    $addSequenceMember($variable, $label, participant)
+    ' !log end addParticipant
+!endprocedure
+
+
+!unquoted procedure $printParticipantLabels()
+    ' !log begin printParticipantLabels
+    !local $i = 1
+    ' !log $getArrayIndexName($participantVariableArrayName) value is $getArrayIndexValue($participantVariableArrayName)
+    !local $arrayIndexValue = $getArrayIndexValue($participantVariableArrayName)
+    ' !log $participantVariableArrayName is $arrayIndexValue
+    !while ($i <= $arrayIndexValue)
+        !$participantVariable = $getArrayValue($participantVariableArrayName,$i)
+        ' !log participantVariable is $participantVariable
+        !$participantLabel = $getArrayValue($participantLabelsArrayName,$i)
+        ' !log participantLabel is $participantLabel
+        / rnote over $participantVariable $participantColor : $participantLabel
+        
+        !$i = $i + 1
+    !endwhile
+    ' !log end printParticipantLabels
+!endprocedure

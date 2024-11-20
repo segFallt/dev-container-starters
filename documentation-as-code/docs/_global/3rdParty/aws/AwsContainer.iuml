@@ -1,0 +1,45 @@
+
+sprite $Cloud [40x40/16z] {
+xL9L0WKX21mxWFiVztM3_BxQsLudL93FnGQk4KY5nCT0cuTxnd1fBLwC2DsX4URj7KvqgVVt4KVAJL6q1-8uCCtO-FH5g_IHzCAgGOiwPIAHsfF1rbQzxD20
+Ofaxb9SLw5cfR41_-3pVZvzujQvuBJ-ho6kEEmRCxcog5Id3G2RvQcpO0m
+}
+
+sprite $VPCSubnetPrivate [40x40/16z] {
+vT6r0GGW50FGm3Uo_y3dZZRdQR27yyyJcW296LDea0OTCqkdIiv3XqijnMZNwtQU9ylLzJgfh3dmSnrQOPrtzvKCAGiEHiVSkP1KdRfOT4GmKinT9C0vS5Nj
+rKvV-x-jy6-p1G
+}
+
+sprite $VPCSubnetPublic [40x40/16z] {
+vT6rWGGm30J05Klz5_n_ZARaU1FJcEl74qg0n8mfB2eDEcP6XmhBY2LELOosrlDsBWE7HhqLoZM7Ub-7HbhsrNt9a5nmi78CtVd_rHQTBkph5OYv2m1UGtUk
+lSJfS_-tbVhP_0C
+}
+
+sprite $VirtualPrivateCloudVPC [40x40/16z] {
+xP85iWCW44C3w_S_y9TsQ-XCHwh1uM61U69znGMex1jA8VQN4tI9ISc5V0awx5p7OckMIrsBLf866As1Od_aSDjoq_BPxbQJ8DGS5nvW9NSX3a7sWQppHBE6
+OyhknY4zZ-2eYKEav_xCpojGuyc8oshR67FthCSokuVSFWfi-pdIqkPtZlpBvng8F5vQN_q2
+}
+
+sprite $CorporateDataCenter [40x40/16z] unpPW0462Ac3qjHKnq03TKFP7x1u065ySO8kJh4wC88Hz54tweyXx3vqm3c20G
+
+
+' AWS Container Elements
+' ##################################
+
+!definelong AwsContainerStyle(e_stereotype, e_bordercolor, e_backgroundcolor)
+    skinparam rectangle<<e_stereotype>> {
+        BorderColor<<e_stereotype>> e_bordercolor
+        RoundCorner<<e_stereotype>> 15
+        Borderthickness<<e_stereotype>> 2
+        BackgroundColor<<e_stereotype>> e_backgroundcolor
+        TextAlignment<<e_stereotype>> left
+    }
+!enddefinelong
+
+!definelong AwsContainer(alias, stereotype, description, label, scale, e_color)
+    rectangle alias <<stereotype>> as "\l<color:e_color><$stereotype*scale> description</color>\n<size:10>label</size>"
+!enddefinelong
+
+
+!definelong AwsContainer(alias, stereotype, description, label, scale, e_color, e_spriteColor)
+    rectangle alias <<stereotype>> as "\l<color:e_spriteColor><$stereotype*scale></color> <color:e_color>description</color>\n<size:10>label</size>"
+!enddefinelong

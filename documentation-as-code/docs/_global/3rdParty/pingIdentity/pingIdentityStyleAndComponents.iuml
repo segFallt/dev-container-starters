@@ -1,0 +1,54 @@
+@startuml
+
+
+sprite $PingIdentity [64x64/16z] {
+xTG74Yeh44RX9iD_Ul_hVGCuvHXVplTK2TBMPrRze_hHZtxqen_n-pG3z2lo7LinpEpNUEnMB22v7IL-jLzLtyVm6xrL26QMVwtFEKUR2GLBw5Tw1szsLC3T
+fmVMWcuns_kBHxTtBi9ekIDNhNWlkSBMhUJIS5SelFCaCmi-ryQUXlCroOjT4kzyDBFesSmwYvwvFDgrpAVddq-Vx9xeSqjr3NFkwCcx-uBMJxzErNrkWxGE
+h5TH73tvUyx5DzUImyD-qOpzvVhe1LVFwUDS4Vsh3q9lFNavLp2pzCRdep8SVV3OFRtnpapww1LEFj2hHwlFdh9UOAoWt-BjgFWH-Ys-sL6QRr9tVeFlTa_y
+Uh-si-y-BRXyHSJjtKTlhSsf5NI9KkjbGYkr3EXhsqUHKgfm-vE9w9e34hh5Qc_dSPo_MSQBPz-GqAKzozeXEy9vz--AkOIl5Gd1cY4tmU9kivZYsiUpX-Rc
+g0eDRsAOD2JhSsNCmRsAdhminRaMwsuXcR95XLOjZj3042ESlADddwgxUUm-WXl74NDYSuEQl4OaNAsMskJenTl0pTVhStEcv-OnZsqJLj97tyVGanScUrAl
+FbRtjSBfVNieEL06NxqicY5B8VkKrQruE7mQ3AiZT_Gbe2D17o0aCIeIgfARq7U-BZEuNbjZUa2_8oBwNQ7_R3y1
+}
+
+sprite $PingFedAdapter [64x64/16z] {
+xTG74Yeh44RX9iD_Ul_hVGCuvHXVplTK2TBMPrRze_hHZtxqen_n-pG3z2lo7LinpEpNUEnMB22v7IL-jLzLtyVm6xrL26QMVwtFEKUR2GLBw5Tw1szsLC3T
+fmVMWcuns_kBHxTtBi9ekIDNhNWlkSBMhUJIS5SelFCaCmi-ryQUXlCroOjT4kzyDBFesSmwYvwvFDgrpAVddq-Vx9xeSqjr3NFkwCcx-uBMJxzErNrkWxGE
+h5TH73tvUyx5DzUImyD-qOpzvVhe1LVFwUDS4Vsh3q9lFNavLp2pzCRdep8SVV3OFRtnpapww1LEFj2hHwlFdh9UOAoWt-BjgFWH-Ys-sL6QRr9tVeFlTa_y
+Uh-si-y-BRXyHSJjtKTlhSsf5NI9KkjbGYkr3EXhsqUHKgfm-vE9w9e34hh5Qc_dSPo_MSQBPz-GqAKzozeXEy9vz--AkOIl5Gd1cY4tmU9kivZYsiUpX-Rc
+g0eDRsAOD2JhSsNCmRsAdhminRaMwsuXcR95XLOjZj3042ESlADddwgxUUm-WXl74NDYSuEQl4OaNAsMskJenTl0pTVhStEcv-OnZsqJLj97tyVGanScUrAl
+FbRtjSBfVNieEL06NxqicY5B8VkKrQruE7mQ3AiZT_Gbe2D17o0aCIeIgfARq7U-BZEuNbjZUa2_8oBwNQ7_R3y1
+}
+
+!$PingColor = "#D7341F"
+
+!definelong PingContainerStyle(e_stereotype, e_color)
+    skinparam rectangle<<e_stereotype>> {
+        BorderColor<<e_stereotype>> e_color
+        RoundCorner<<e_stereotype>> 15
+        Borderthickness<<e_stereotype>> 2
+        TextAlignment<<e_stereotype>> left
+    }
+!enddefinelong
+
+
+' !definelong PingRectangleEntity(alias, stereotype, description, label, scale, e_color, s_color)
+'     rectangle alias <<stereotype>> as "\l<color:s_color><$stereotype*scale></color><color:e_color>  description</color>\n<size:10>label</size>"
+' !enddefinelong
+
+!definelong PingRectangleEntity(alias, stereotype, description, label, scale, e_color)
+    rectangle alias <<stereotype>> as "\l<color:e_color><$stereotype*scale>  description</color>\n<size:10>label</size>"
+!enddefinelong
+
+PingContainerStyle(PingIdentity, $PingColor)
+!define PingContainer(alias, description, label) PingRectangleEntity(alias, PingIdentity, description, label, .6, #D7341F)
+
+PingContainerStyle(PingFedAdapter, $PingColor)
+!define PingAdapterContainer(alias, description, label) PingRectangleEntity(alias, PingFedAdapter, description, label, .3, #Blue)
+
+PingContainerStyle(PingFedAdapter, $PingColor)
+!define PingSelectorContainer(alias, description, label) PingRectangleEntity(alias, PingFedAdapter, description, label, .3, #Blue)
+
+
+
+
+@enduml
