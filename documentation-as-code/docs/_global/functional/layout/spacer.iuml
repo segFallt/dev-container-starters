@@ -1,0 +1,37 @@
+!procedure SetLayout($stereo = layout)
+skinparam rectangle<<$stereo>> {
+  borderColor Transparent
+  backgroundColor Transparent
+  fontColor Transparent
+  stereotypeFontColor Transparent
+}
+!endprocedure
+
+
+
+!procedure Spacer($alias, $count)
+
+!local $i = 1
+
+!$stereo = "layout"
+
+SetLayout($stereo)
+
+rectangle $alias <<$stereo>> {
+    !while ($i <= $count)
+        rectangle %random($i, 10000) <<$stereo>>
+        !$i = $i + 1
+    !endwhile
+}
+
+!endprocedure
+
+!procedure SpacerLink($spacer, $obj1, $obj2)
+$obj1 -[hidden]- $spacer
+$spacer -[hidden]- $obj2
+!endprocedure
+
+!procedure SpacerAndLink($alias, $count, $obj1, $obj2)
+Spacer($alias, $count)
+SpacerLink($alias, $obj1, $obj2)
+!endprocedure
