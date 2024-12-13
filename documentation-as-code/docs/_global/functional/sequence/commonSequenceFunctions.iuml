@@ -26,10 +26,20 @@
     ' !log end addMember
 !endprocedure
 
+!unquoted procedure AddSequenceMember($variable, $label, $memberType)
+    $addSequenceMember($variable, $label, $memberType)
+!endprocedure
+
+
+
 !unquoted procedure $addParticipant($variable, $label)
     ' !log begin addParticipant with arguments: $variable, $label
     $addSequenceMember($variable, $label, participant)
     ' !log end addParticipant
+!endprocedure
+
+!unquoted procedure AddParticipant($variable, $label)
+    $addParticipant($variable, $label)
 !endprocedure
 
 
@@ -49,4 +59,8 @@
         !$i = $i + 1
     !endwhile
     ' !log end printParticipantLabels
+!endprocedure
+
+!unquoted procedure PrintParticipantLabels()
+    $printParticipantLabels()
 !endprocedure
