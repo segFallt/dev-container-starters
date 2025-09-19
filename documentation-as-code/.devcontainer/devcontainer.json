@@ -16,6 +16,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"yzhang.markdown-all-in-one", // Helpful Markdown tooling
+        		"tomoyukim.vscode-mermaid-editor",
 				"jebbs.plantuml"
 			],
 			"settings": {
