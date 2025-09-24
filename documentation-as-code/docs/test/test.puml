@@ -2,8 +2,8 @@
 
 !$GLOBAL_BASEPATH = ../_global
 
-!include $GLOBAL_BASEPATH/style/theme/mermaid-dark-theme.iuml
-!include $GLOBAL_BASEPATH/functional/sequence/commonSequenceFunctions.iuml
+!include /workspace/docs/_global/style/theme/mermaid-dark-theme.iuml
+!include /workspace/docs/_global/functional/sequence/commonSequenceFunctions.iuml
 
 skinparam MaxMessageSize 250
 
