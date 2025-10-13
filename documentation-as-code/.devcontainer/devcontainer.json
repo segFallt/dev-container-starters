@@ -1,5 +1,5 @@
 {
-	// "name": "PlantUML & Mermaid Development",
+	"name": "PlantUML & Mermaid Development",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
@@ -14,7 +14,7 @@
 		"vscode": {
 			"extensions": [
 				"yzhang.markdown-all-in-one",
-				"tomoyukim.vscode-mermaid-editor", 
+				// "tomoyukim.vscode-mermaid-editor", 
 				"jebbs.plantuml",
 				"d8aware.vscode-mermaid-extension",
 				"vstirbu.vscode-mermaid-preview",

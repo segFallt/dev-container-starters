@@ -53,9 +53,23 @@ B --> C
 ```
 
 **Render** from the integrated terminal:
+
 ```bash
-mmdc -i diagram.mermaid -o diagram.svg
+mmdc -i diagram.mermaid -o diagram.svg -p puppeteer-config.json
 ````
+
+To control theme and background color
+```bash
+mmdc -i diagram.mermaid -o diagram.svg -p puppeteer-config.json -t dark -b '#0D1117'
+```
+
+To see all available CLI options:
+```bash
+mmdc -h
+```
+
+For more information on the Mermaid CLI: [Mermaid CLI Docs](https://github.com/mermaid-js/mermaid-cli)
+
 
 For any files with .mermaid extension, open the file, then inside the editor window open the context menu and select the preview option `Mermaid:Preview diagram`.  
 This will live update as you make changes.
