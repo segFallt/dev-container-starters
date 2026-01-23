@@ -1,4 +1,5 @@
 #!/bin/bash
 
 
-npm install -g @anthropic-ai/claude-code
+# Install Claude Code using native installer (recommended method)
+curl -fsSL https://claude.ai/install.sh | bash
