@@ -6,4 +6,4 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 # Install get-shit-done
 # https://github.com/glittercowboy/get-shit-done
-npx get-shit-done-cc --claude --global
+npx -y get-shit-done-cc --claude --global
