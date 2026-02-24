@@ -18,23 +18,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"yzhang.markdown-all-in-one",
-				// "tomoyukim.vscode-mermaid-editor", 
-				"jebbs.plantuml",
-				// "d8aware.vscode-mermaid-extension",
-				"vstirbu.vscode-mermaid-preview",
-				// "bierner.markdown-mermaid"
-			],
-			"settings": {
-				"plantuml.jar": "/plantuml/plantuml.jar",
-				"plantuml.exportFormat": "svg",
-				"plantuml.diagramsRoot": "docs",
-				"plantuml.exportOutDir": "out",
-				"files.associations": {
-					"*.puml": "plantuml",
-					"*.plantuml": "plantuml"
-				}
-			}
+
+			]			
 		}
 	},
 	"postCreateCommand": ["/bin/sh", "-c", "/bin/sh ./.devcontainer/post-create.sh"],

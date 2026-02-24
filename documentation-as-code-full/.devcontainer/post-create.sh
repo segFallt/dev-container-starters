@@ -1,3 +1,1 @@
 #!/bin/bash
-
-npm install -g @mermaid-js/mermaid-cli && node --version && npm --version && mmdc --version && java -version
