@@ -1,0 +1,15 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.0.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/ocean-blue-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+
+$setAutoNumber()
+$addParticipant(Alice, "Alice")
+$addParticipant(Bob, "Bob")
+
+Alice -> Bob: Hello
+Alice <-- Bob: Hi
+
+@enduml
