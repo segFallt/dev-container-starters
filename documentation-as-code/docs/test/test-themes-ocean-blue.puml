@@ -1,0 +1,34 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/ocean-blue-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+
+title "Ocean Blue Theme Test"
+
+$setAutoNumber()
+$setMaxMessageSize(200)
+
+$addParticipant(Client, "Client App")
+$addParticipant(API, "API Gateway")
+$addParticipant(Service, "Backend Service")
+
+group Authentication
+    Client -> API ++: POST /login
+    note right of Client: Username + Password
+    API -> Service ++: Validate credentials
+    API <-- Service --: User token
+    Client <-- API --: JWT response
+end
+
+Client -> API: GET /data (with token)
+API -> Service: Fetch data
+note right of API
+    Bearer token
+    forwarded
+end note
+API <-- Service: Data payload
+Client <-- API: JSON response
+
+@enduml

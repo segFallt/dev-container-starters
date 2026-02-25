@@ -1,0 +1,26 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/3rdParty/aws11/AwsCommon.iuml
+
+title "AWS v11 Wrapper Test"
+
+skinparam linetype ortho
+
+Cloud(cloud, "AWS Cloud", "us-west-2") {
+    VirtualPrivateCloudVPC(vpc, "VPC", "10.0.0.0/16") {
+        VPCSubnetPublic(pub, "Public", "10.0.1.0/24") {
+            EC2(instance, "Web Server", "t3.micro")
+        }
+        VPCSubnetPrivate(priv, "Private", "10.0.2.0/24") {
+            Lambda(fn, "Lambda", "Python")
+        }
+    }
+}
+
+Users(users, "End Users", " ")
+users -down-> instance
+instance -right-> fn
+
+@enduml

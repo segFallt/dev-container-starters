@@ -1,0 +1,38 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/ocean-blue-theme.iuml
+!include $COMPONENTS_PUML/functional/class/commonClassFunctions.iuml
+!include $COMPONENTS_PUML/functional/relational/relationalDataCommonFunctions.iuml
+
+title "Class / ER Diagram Functions Test"
+
+$showEmptyNamespaces("false")
+
+$schema("public", public_schema) {
+    $table("users", users) {
+        $pk("id")
+        $column("username")
+        $column("email")
+        $column("created_at")
+        $fk("org_id")
+    }
+
+    $table("organizations", orgs) {
+        $pk("id")
+        $column("name")
+        $column("domain")
+    }
+
+    $view("active_users", active_users_view) {
+        $column("id")
+        $column("username")
+        $column("org_name")
+    }
+}
+
+users }o--|| orgs : "belongs to"
+active_users_view ..> users : "derives from"
+
+@enduml

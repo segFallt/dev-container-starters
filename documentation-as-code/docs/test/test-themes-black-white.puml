@@ -1,0 +1,28 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/black-white-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+
+title "Black & White Theme Test"
+
+$setAutoNumber()
+$setMaxMessageSize(200)
+
+$addParticipant(Client, "Client App")
+$addParticipant(API, "API Gateway")
+$addParticipant(Service, "Backend Service")
+
+group Request Flow
+    Client -> API ++: POST /request
+    API -> Service ++: Process
+    API <-- Service --: Result
+    Client <-- API --: Response
+end
+
+Client -> API: GET /status
+API --> Client: 200 OK
+note right of Client: Status check complete
+
+@enduml

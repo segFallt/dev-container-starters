@@ -1,0 +1,21 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/3rdParty/kubernetes/KubernetesCommon.iuml
+
+title "Kubernetes Diagram Test"
+
+Deploy(apiDeploy, "API Deployment", "v2.3.1")
+Deploy(workerDeploy, "Worker Deployment", "v1.0.0")
+Secret(dbSecret, "DB Credentials", "Opaque")
+StatefulSet(dbSts, "PostgreSQL", "14.2")
+CustomResourceDefinition(myCrd, "BackupPolicy", "v1alpha1")
+
+apiDeploy -right-> dbSecret
+apiDeploy -down-> dbSts
+workerDeploy -down-> dbSts
+workerDeploy -left-> dbSecret
+myCrd -up-> dbSts
+
+@enduml

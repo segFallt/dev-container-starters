@@ -1,0 +1,27 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/ocean-blue-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+!include $COMPONENTS_PUML/3rdParty/auth.iuml
+
+title "OAuth2 Auth Flows Test"
+
+$setAutoNumber()
+
+$addParticipant(ClientApp, "Client Application")
+$addParticipant(AuthServer, "Authorization Server")
+$addParticipant(ResourceServer, "Resource Server")
+
+$internalClientCredentialAuth(ClientApp, AuthServer, "Service Auth", "scope=api.read")
+
+$validateBearerToken(ResourceServer, AuthServer, "Token Validation", "")
+
+$introspectToken(ResourceServer, AuthServer, "Token Introspection", "")
+
+$jwksLocalValidateToken(ResourceServer, AuthServer, "JWKS Validation", "")
+
+$tokenExchange(ClientApp, AuthServer, "Token Exchange", "audience=downstream-api")
+
+@enduml

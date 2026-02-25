@@ -1,0 +1,38 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/3rdParty/aws14/AwsCommon.iuml
+
+title "AWS v14 Architecture Test"
+
+skinparam linetype ortho
+
+CorporateDataCenter(dc, "Corporate Data Center", "On-Premises") {
+    Traditionalserver(onprem, "Legacy Server", "CentOS")
+}
+
+Cloud(cloud, "AWS Cloud", "us-east-1") {
+    VirtualPrivateCloudVPC(vpc, "Production VPC", "10.0.0.0/16") {
+        VPCSubnetPublic(pubSub, "Public Subnet", "10.0.1.0/24") {
+            ElasticLoadBalancingApplicationLoadBalancer(alb, "Application LB", "internet-facing")
+        }
+        VPCSubnetPrivate(privSub, "Private Subnet", "10.0.2.0/24") {
+            EC2(web, "Web Server", "t3.medium")
+            Lambda(fn, "Processor", "Node.js 18")
+        }
+    }
+}
+
+SecretsManager(secrets, "Secrets Manager", "API keys")
+SimpleStorageService(s3, "S3 Bucket", "Static assets")
+SimpleQueueService(sqs, "Message Queue", "Standard")
+
+dc -right-> alb
+alb -down-> web
+web -right-> fn
+fn -down-> sqs
+web -right-> s3
+web -down-> secrets
+
+@enduml

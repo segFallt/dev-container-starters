@@ -11,8 +11,7 @@
 		},
 		"ghcr.io/segFallt/dev-container-features/documentation-as-code:1": {
 			"plantumlVersion": "1.2025.7",
-            "mermaidVersion": "11.4.1",
-            "installIncludeLibrary": true
+            "mermaidVersion": "11.4.1"
 		}
 	},
 	"customizations": {

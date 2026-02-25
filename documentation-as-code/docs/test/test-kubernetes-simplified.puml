@@ -1,0 +1,18 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/3rdParty/kubernetes/KubernetesSimplified.iuml
+
+title "Kubernetes Simplified (Icon-Only) Test"
+
+Deploy(app, "App", "v1.0")
+Secret(creds, "Credentials", "Opaque")
+StatefulSet(db, "Database", "PostgreSQL")
+CustomResourceDefinition(policy, "ScalePolicy", "v1")
+
+app -right-> creds
+app -down-> db
+policy -up-> app
+
+@enduml

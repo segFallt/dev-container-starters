@@ -1,0 +1,16 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/3rdParty/pingIdentity/pingIdentityStyleAndComponents.iuml
+
+title "PingIdentity Containers Test"
+
+PingContainer(pingFed, "PingFederate", "Authentication Server")
+PingAdapterContainer(htmlAdapter, "HTML Form Adapter", "Login Page")
+PingSelectorContainer(idpSelector, "IdP Selector", "Identity Routing")
+
+pingFed -down-> htmlAdapter
+pingFed -down-> idpSelector
+
+@enduml
