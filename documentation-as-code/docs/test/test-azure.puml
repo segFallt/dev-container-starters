@@ -1,0 +1,14 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/3rdParty/azure2.1/azureCommon.iuml
+
+title "Azure Integration Test"
+
+AzureFunction(processorFn, "Event Processor", "Node.js")
+AzureEventHub(eventHub, "Telemetry Hub", "Standard")
+
+eventHub -right-> processorFn : "triggers"
+
+@enduml

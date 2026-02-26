@@ -1,0 +1,31 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/mermaid-dark-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+
+title "Mermaid Dark Theme Test"
+
+$setAutoNumber()
+$setMaxMessageSize(200)
+
+$addParticipant(Browser, "Browser")
+$addParticipant(Server, "Web Server")
+$addParticipant(DB, "Database")
+
+Browser -> Server ++: HTTP GET /page
+Server -> DB ++: SELECT * FROM pages
+Server <-- DB --: Page data
+Browser <-- Server --: HTML response
+
+group Error Handling
+    Browser -> Server ++: HTTP GET /missing
+    Server -> DB: SELECT * FROM pages WHERE slug='missing'
+    Server <-- DB: Empty result
+    Browser <-- Server --: 404 Not Found
+end
+
+note right of Browser: Dark theme renders\nwith blue accents
+
+@enduml

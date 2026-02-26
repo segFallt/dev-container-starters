@@ -1,0 +1,19 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/random-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+
+title "Random Theme Test (unique colors each render)"
+
+$setAutoNumber()
+
+$addParticipant(A, "Service A")
+$addParticipant(B, "Service B")
+
+A -> B: Request
+A <-- B: Response
+note right of A: Colors change every render
+
+@enduml

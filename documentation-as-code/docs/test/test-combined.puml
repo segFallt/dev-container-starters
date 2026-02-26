@@ -1,0 +1,31 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/ocean-blue-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+!include $COMPONENTS_PUML/3rdParty/auth.iuml
+
+title "Combined Test: Theme + Sequence Functions + Auth Flows"
+
+$setAutoNumber()
+$setMaxMessageSize(250)
+
+$addParticipant(WebApp, "Web Application")
+$addParticipant(Gateway, "API Gateway")
+$addParticipant(AuthSvc, "Auth Service")
+$addParticipant(Backend, "Backend API")
+
+WebApp -> Gateway: POST /api/login
+note right of WebApp: User submits credentials
+
+$internalClientCredentialAuth(Gateway, AuthSvc, "Gateway Auth", "scope=internal")
+
+Gateway -> Backend ++: GET /api/data (with token)
+Gateway <-- Backend --: Protected resource
+
+WebApp <-- Gateway: API response
+
+$printParticipantLabels()
+
+@enduml

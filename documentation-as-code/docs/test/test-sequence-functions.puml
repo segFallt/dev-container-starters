@@ -1,0 +1,30 @@
+@startuml
+
+!$COMPONENTS_PUML = "https://raw.githubusercontent.com/segFallt/plantUML-components/v2.1.1/dist"
+!include $COMPONENTS_PUML/Common.iuml
+!include $COMPONENTS_PUML/style/theme/ocean-blue-theme.iuml
+!include $COMPONENTS_PUML/functional/sequence/commonSequenceFunctions.iuml
+
+title "Sequence Functions Test"
+
+$setAutoNumber("1", "1")
+$setMaxMessageSize(250)
+
+$addParticipant(User, "End User")
+$addSequenceMember(Gateway, "API Gateway", participant)
+$addSequenceMember(Auth, "Auth Service", participant)
+$addParticipant(Backend, "Backend")
+
+User -> Gateway: Login request
+Gateway -> Auth: Validate credentials
+Gateway <-- Auth: Token issued
+User <-- Gateway: JWT token
+
+User -> Gateway: GET /api/resource
+Gateway -> Backend: Forward request
+Gateway <-- Backend: Resource data
+User <-- Gateway: JSON response
+
+$printParticipantLabels()
+
+@enduml
