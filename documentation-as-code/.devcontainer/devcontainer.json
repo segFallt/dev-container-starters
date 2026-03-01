@@ -10,7 +10,7 @@
 			"installYarnUsingApt": false
 		},
 		"ghcr.io/segFallt/dev-container-features/documentation-as-code:1": {
-			"plantumlVersion": "1.2025.7",
+			"plantumlVersion": "1.2026.2",
             "mermaidVersion": "11.4.1"
 		}
 	},
