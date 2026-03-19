@@ -5,13 +5,9 @@
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "stable",
+			"version": "20",
 			"nodeGypDependencies": true,
 			"installYarnUsingApt": false
-		},
-		"ghcr.io/segFallt/dev-container-features/documentation-as-code:1": {
-			"plantumlVersion": "1.2025.7",
-            "mermaidVersion": "11.4.1"
 		}
 	},
 	"customizations": {
@@ -20,9 +16,9 @@
 				"yzhang.markdown-all-in-one",
 				// "tomoyukim.vscode-mermaid-editor", 
 				"jebbs.plantuml",
-				// "d8aware.vscode-mermaid-extension",
+				"d8aware.vscode-mermaid-extension",
 				"vstirbu.vscode-mermaid-preview",
-				// "bierner.markdown-mermaid"
+				"bierner.markdown-mermaid"
 			],
 			"settings": {
 				"plantuml.jar": "/plantuml/plantuml.jar",
@@ -40,4 +36,7 @@
 	"remoteUser": "vscode",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
     "workspaceFolder": "/workspace"
+	// "mounts": [
+	// 	"source=vscode-extensions,target=/home/vscode/.vscode-server/extensions,type=volume"
+	// ]
 }
