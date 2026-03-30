@@ -21,7 +21,8 @@
             "installDefaultPermissions": true,
 			"installSystemDeps": true,
 			"nodeVersion": "lts"
-		}
+		},
+		"ghcr.io/devcontainers/features/python:1": {}
 	},
 	"overrideCommand": false,
 	"mounts": [
