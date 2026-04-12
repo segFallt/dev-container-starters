@@ -12,3 +12,7 @@ EOF
 
 echo "==> Adding project-workflow marketplace..."
 claude plugin marketplace add https://github.com/segFallt/project-workflow-claude-plugin.git
+
+# Temporary fix to use npx for claude code cache bug
+echo "alias claude='npx -y @anthropic-ai/claude-code'" >> ~/.bashrc
+source ~/.bashrc
