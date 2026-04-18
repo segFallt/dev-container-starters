@@ -19,7 +19,12 @@
 			"extensions": [
 
 			]			
-		}
+		},
+		"settings": {
+				// "plantuml.exportFormat": "svg",
+				"plantuml.diagramsRoot": "docs",
+				"": "out"
+			}
 	},
 	"postCreateCommand": ["/bin/sh", "-c", "/bin/sh ./.devcontainer/post-create.sh"],
 	"remoteUser": "vscode",
