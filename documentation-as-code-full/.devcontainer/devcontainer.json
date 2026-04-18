@@ -22,7 +22,7 @@
 			],
 			"settings": {
 				"plantuml.jar": "/plantuml/plantuml.jar",
-				"plantuml.exportFormat": "svg",
+				// "plantuml.exportFormat": "svg",
 				"plantuml.diagramsRoot": "docs",
 				"plantuml.exportOutDir": "out",
 				"files.associations": {
