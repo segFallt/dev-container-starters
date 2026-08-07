@@ -4,9 +4,13 @@
 		"dockerfile": "Dockerfile"
 	},
 	"runArgs": [
-    "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW"
-  ],
+		"--cap-add=NET_ADMIN",
+		"--cap-add=NET_RAW"
+
+		// "--network=host",
+		// "--init",
+		// "--privileged"
+  	],
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": "true",
@@ -16,17 +20,25 @@
 			"gid": "1000"
 		},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		// USE BELOW FOR WINDOWS DOCKER DESKTOP COMPATIBILITY ISSUE
+		// "ghcr.io/devcontainers/features/docker-in-docker:1": {
+		// 	"version": "27"
+		// },
 		"ghcr.io/segfallt/dev-container-features/claude-code:latest": {
 			"version": "latest",
             "installDefaultPermissions": true,
 			"installSystemDeps": true,
 			"nodeVersion": "lts"
 		},
-		"ghcr.io/devcontainers/features/python:1": {}
+		// "ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.12"
+		}
 	},
 	"overrideCommand": false,
 	"mounts": [
-	
+		// "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
+		// "source=../.claude-code-home/.claude,target=/home/vscode/.claude,type=bind,consistency=cached"
 	],
 	"customizations": {
 		"vscode": {
