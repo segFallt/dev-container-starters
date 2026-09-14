@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-bullseye
+FROM mcr.microsoft.com/vscode/devcontainers/base:bookworm
 
 ARG PLANT_UML_VERSION="1.2025.7"
 
