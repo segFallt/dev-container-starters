@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+readonly DEFAULT_BRANCH="main"
+readonly REMOTE="origin"
+
 REPOS=(
     "/workspace"
-    # map additional repo paths here
 )
 
 # Repos never touched by clean (untracked-file removal)
